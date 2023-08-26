@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from 'cors';
 import dotenv from 'dotenv';
-import db from './models/index.js';
+import db from '../models/index.js';
+import allRoutes from './routes/router';
 
 dotenv.config();
 
@@ -13,9 +14,7 @@ const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello Babel");
-});
+app.use('/api/v1', allRoutes );
 
 const server = app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
