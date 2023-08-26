@@ -1,13 +1,14 @@
-import { config } from 'dotenv';
+const dotenv = require('dotenv');
 
 // CONFIGURE DOTENV
-config();
+dotenv.config();
 
 // LOAD ENV VARIABLES
 const { DB_HOST, DB_NAME, DB_USER, DB_PASSWORD, DB_PORT } = process.env;
 
 // EXPORT CONFIG
-export const development = {
+module.exports = {
+ development : {
   username: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,
@@ -18,4 +19,5 @@ export const development = {
     connectTimeout: 60000,
     charset: 'utf8_general_ci',
   },
+},
 };

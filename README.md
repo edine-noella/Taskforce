@@ -43,34 +43,36 @@ Follow these steps to run the project on your local machine after cloning:
     ```
 
   
-2. *Install server dependencies:*
- 
-   ```js
+3. *Install server dependencies:*
+
+   ```sh   
      cd server
-        ```
+     ```
 
-   #create a .env file in the server directory and add the variables from .evn.example
-
-   ```sh
+    ```sh
      npm install
-        ```
+     ```
+     `Create the the .env file in server directory and add contents from .env.example file !!!`
 
-   ```sh
+      ```sh
         cd ../
     ```
 
-  
+# Create the the .env file in server directory and add contents from .env.examples files !!!  
 
-3. *Run the application:*
+5. *Run the application:*
 
-  # Go to the root directory and run the application
+   ```sh   
+     npm run dev
+     ```
 
-  ```sh
-     cd ../
-        ```
-    ```sh
-    npm run dev
-    ```
+5. *Visit the client link to checkout the application in browser*
+   
+   [http://localhost:5173/](http://localhost:5173/)
+
+
+   
+
 
 
 
