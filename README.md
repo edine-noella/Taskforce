@@ -56,9 +56,7 @@ Follow these steps to run the project on your local machine after cloning:
 
       ```sh
         cd ../
-    ```
-
-# Create the the .env file in server directory and add contents from .env.examples files !!!  
+    ``` 
 
 5. *Run the application:*
 

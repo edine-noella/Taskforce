@@ -1,23 +1,33 @@
-import {  useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Expenses from './pages/expensesPage'
+import Categories from './pages/categoriesPage'
+import Income from './pages/incomePage'
+import SubCategoriesPage from './pages/subCategoriesPage'
+import LandingPage from './pages/landingPage'
+import Navbar from './components/Navbar'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
-function App() {
-  const [count, setCount] = useState(0)
-   
-  useEffect(() => {
-    fetch('http://localhost:3000/api')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-      })
-  }, [])
-    
+const App = () => {
+
   return (
-    <>
-     
-    </>
+    <Router>
+      <main className='relative h-full' >
+        <Navbar />  
+
+            <Routes>     
+            <Route path="/" element={<LandingPage />} />  
+            <Route path="/expenses" element={<Expenses />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/income" element={<Income />} />
+            <Route path="/subcategories" element={<SubCategoriesPage />} />
+            <Route path="/landingPage" element={<LandingPage />} />
+
+           
+          </Routes>       
+          <ToastContainer/>
+      </main>
+    </Router>
   )
 }
 
