@@ -33,6 +33,7 @@ const CategoryTable = () => {
   const [data, setData] = useState(categoryData?.data || [])
 
   useEffect(() => {
+  
     if (categoryListIsSuccess) {      
       setData(
         categoryData?.data?.rows?.map((row, index) => ({
@@ -45,11 +46,14 @@ const CategoryTable = () => {
     }
   }, [categoryData, categoryListIsSuccess])
 
+  
+
   useEffect(() => {
+
     categoryMutation()
     .unwrap()
     .then((data) => {
-        console.log(data)
+      
       setData(
         data?.data?.rows?.map((row, index) => ({           
             id: index + 1,
@@ -60,7 +64,7 @@ const CategoryTable = () => {
     })
 }, [])
 
-
+console.log(data);
 
 
 const columns = useMemo(
@@ -97,7 +101,9 @@ const columns = useMemo(
     {
       columns,
       data,
+      initialState: { pageIndex: 0 },
     },
+
     useFilters,
     tableHooks,
     useGlobalFilter,
