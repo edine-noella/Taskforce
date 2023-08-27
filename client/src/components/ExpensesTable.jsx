@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime'
 import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Loading from '../components/Loading'
+import moment from 'moment';
 
 import {
   useGlobalFilter,
@@ -52,15 +53,17 @@ const ExpensesTable = () => {
     ExpensesMutation({})
     .unwrap()
     .then((data) => {
-        console.log(data)
+        
       setData(
-        data?.data?.rows?.map((row, index) => ({           
+        data?.data?.map((row, index) => ({           
             id: index + 1,
             amount: row?.amount,
             categoryName: row?.ExpensesCategories?.categoryName,
             subCategoryName: row?.ExpensesSubCategories?.subCategoryName,
             description: row?.ExpensesSubCategories?.description,
-            CreatedAt: row?.CreatedAt
+            CreatedAt: moment(row?.CreatedAt)            
+            .format('YYYY-MM-DD'),     
+           
         })) || [data]
         )
     })
@@ -242,7 +245,7 @@ const columns = useMemo(
         <h1 className="text-[25px] font-medium text-center">
           Could not load expenses records
         </h1>
-        <Button value="Go to dashboard" route="/dashboard" />
+        <Button value="Go to LandingPage" route="/landingPage" />
       </main>
     )
   }

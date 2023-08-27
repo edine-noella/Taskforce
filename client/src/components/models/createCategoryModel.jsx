@@ -45,7 +45,7 @@ function CreateCategoryModel() {
         closeModal()
       })
       .catch((error) => {
-        console.error(error)
+      
         if (error.data && error.data.message){
           toast.error(error.data.message)
         }else{

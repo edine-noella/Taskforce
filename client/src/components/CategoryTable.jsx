@@ -9,15 +9,17 @@ import {
   useAsyncDebounce,
   useFilters,
   usePagination,
-  useSortBy
+  useSortBy,
 } from 'react-table'
 
 import { useLazyGetAllExpensesCategoriesQuery } from '../states/api/apiSlice'
 import Button from '../components/Button'
 import Input from '../components/Input'
 
-
 const CategoryTable = () => {
+
+  const [data, setData] = useState([])
+
   const [
     categoryMutation,
     {
@@ -29,63 +31,31 @@ const CategoryTable = () => {
     },
   ] = useLazyGetAllExpensesCategoriesQuery()
 
-
-  const [data, setData] = useState(categoryData?.data || [])
+  useEffect(() => {
+    categoryMutation()
+  }, [])
 
   useEffect(() => {
-  
-    if (categoryListIsSuccess) {      
-      setData(
-        categoryData?.data?.rows?.forEach((row, index) => ({
-          id: index + 1,
-          description: row?.description,
-          categoryName: row?.categoryName         
-         
-        })) 
-      )
+    if (categoryListIsSuccess){
+      setData(categoryData?.data)
     }
   }, [categoryData, categoryListIsSuccess])
 
-
-  useEffect(() => {
-
-    categoryMutation()
-    .unwrap()
-    .then((data) => {
-      
-      setData(
-        data?.data?.rows?.map((row, index) => ({           
-            id: index + 1,
-            description: row?.description,
-          categoryName: row?.categoryName
-        })) || [ data?.data]
-        )
-    })
-}, [])
-  
-// console.log(categoryData?.data);
-console.log(data);
-console.log(data[0])
-
-
-
-const columns = useMemo(
+  const columns = useMemo(
     () => [
       {
         Header: 'category', // Updated header text
-        accessor: 'categoryName',       
+        accessor: 'categoryName',
         sortable: true,
       },
       {
         Header: 'description', // Updated header text
         accessor: 'description', // Match with property name in data
         sortable: true,
-     
-      },     
-       
+      },
     ],
     []
-  );
+  )
   const tableHooks = (hooks) => {
     hooks.visibleColumns.push((columns) => [
       {
@@ -102,8 +72,7 @@ const columns = useMemo(
   const TableInstance = useTable(
     {
       columns,
-      data: data[0] || [],
-    
+      data,
     },
 
     useFilters,
@@ -123,7 +92,6 @@ const columns = useMemo(
     state,
     preGlobalFilteredRows,
     page,
-    
   } = TableInstance
 
   if (categoryListIsSuccess) {
@@ -214,7 +182,7 @@ const columns = useMemo(
               </div>
             </div>
           </div>
-        </div>       
+        </div>
       </main>
     )
   }
@@ -225,7 +193,7 @@ const columns = useMemo(
         <h1 className="text-[25px] font-medium text-center">
           Could not load category records
         </h1>
-        <Button value="Go to dashboard" route="/dashboard" />
+        <Button value="Go to LandingPage" route="/landingPage" />
       </main>
     )
   }
@@ -243,7 +211,6 @@ const columns = useMemo(
     </main>
   )
 }
-
 
 export function SelectColumnFilter({
   column: { filterValue, setFilter, preFilteredRows, id, render },
@@ -315,4 +282,3 @@ function GlobalFilter({
 }
 
 export default CategoryTable
-

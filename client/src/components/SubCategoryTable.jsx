@@ -35,7 +35,7 @@ const SubCategoryTable = () => {
   useEffect(() => {
     if (subCategoryListIsSuccess) {      
       setData(
-        subCategoryData?.data?.rows?.map((row, index) => ({
+        subCategoryData?.data?.map((row, index) => ({
           id: index + 1,
           subCategoryName: row?.subCategoryName,          
           description: row?.description,
@@ -50,9 +50,9 @@ const SubCategoryTable = () => {
     subCategoryMutation()
     .unwrap()
     .then((data) => {
-        console.log(data)
+        
       setData(
-        data?.data?.rows?.map((row, index) => ({           
+        data?.data?.map((row, index) => ({           
           id: index + 1,
           subCategoryName: row?.subCategoryName,          
           description: row?.description,
@@ -225,7 +225,7 @@ const columns = useMemo(
         <h1 className="text-[25px] font-medium text-center">
           Could not load category records
         </h1>
-        <Button value="Go to dashboard" route="/dashboard" />
+        <Button value="Go to LandingPage" route="/landingPage" />
       </main>
     )
   }

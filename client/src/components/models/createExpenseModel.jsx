@@ -49,7 +49,7 @@ function CreateExpenseModal() {
     categoryMutation()
     .unwrap()
     .then((data) => {
-        console.log(data)
+       
         setCategoryData(
             categoryDatas?.data?.rows?.map((row, index) => ({           
             id: index + 1,
@@ -90,7 +90,7 @@ const [
     subCategoryMutation()
     .unwrap()
     .then((data) => {
-        console.log(data)
+       
         setSubCategoryData(
         subCategoryDatas?.data?.rows?.map((row, index) => ({           
           id: index + 1,
@@ -103,8 +103,7 @@ const [
 }, [])
 
 
-console.log(subCategoryData)
-console.log(categoryData)
+
 
   const [showModal, setShowModal] = useState(false)
   const {
@@ -137,7 +136,7 @@ console.log(categoryData)
         closeModal()
       })
       .catch((error) => {
-        console.error(error)
+      
         if (error.data && error.data.message){
           toast.error(error.data.message)
         }else{
