@@ -63,6 +63,8 @@ class ExpensesCategoriesClass{
             });
         }
     }
+
+  
 }
 
 export default ExpensesCategoriesClass;

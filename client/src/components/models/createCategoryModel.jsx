@@ -78,9 +78,9 @@ function CreateCategoryModel() {
         <div
           tabIndex={-1}
           aria-hidden="true"
-          className="fixed top-0 left-0 right-0 z-50 w-full h-screen p-4 flex items-center justify-center bg-gray-800 bg-opacity-60"
+          className="fixed top-0 left-0 right-0 z-50 w-full h-full p-4 flex items-center justify-center bg-gray-800 bg-opacity-60"
         >
-          <div className="relative bg-white rounded-lg shadow">
+          <div className="relative bg-white rounded-lg shadow p-8 w-full md:w-96">
             <button
               onClick={closeModal}
               type="button"
@@ -108,7 +108,7 @@ function CreateCategoryModel() {
                 Add New Category
               </h3>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="flex space-x-4">
+                <div className="flex space-x-6">
                   <div className="flex-1">
                     <label
                       htmlFor="categoryName"
@@ -126,7 +126,7 @@ function CreateCategoryModel() {
                           type="text"
                           {...field}
                           placeholder="Category Name"
-                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-2.5 px-4"
+                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-3 px-4"
                         />
                       )}
                     />
@@ -154,7 +154,7 @@ function CreateCategoryModel() {
                           type="text"
                           {...field}
                           placeholder="Description"
-                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-2.5 px-4"
+                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-3 px-4"
                         />
                       )}
                     />

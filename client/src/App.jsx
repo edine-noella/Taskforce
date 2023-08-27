@@ -12,9 +12,9 @@ const App = () => {
 
   return (
     <Router>
-      <main className='relative h-full' >
+      <div className="flex flex-col min-h-screen" >
         <Navbar />  
-
+        <div className="flex-grow">
             <Routes>     
             <Route path="/" element={<LandingPage />} />  
             <Route path="/expenses" element={<Expenses />} />
@@ -24,9 +24,10 @@ const App = () => {
             <Route path="/landingPage" element={<LandingPage />} />
 
            
-          </Routes>       
+          </Routes>  
+          </div>     
           <ToastContainer/>
-      </main>
+      </div>
     </Router>
   )
 }

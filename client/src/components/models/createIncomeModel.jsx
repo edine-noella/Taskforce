@@ -78,9 +78,9 @@ function CreateIncomeModal() {
         <div
           tabIndex={-1}
           aria-hidden="true"
-          className="fixed top-0 left-0 right-0 z-50 w-full h-screen p-4 flex items-center justify-center bg-gray-800 bg-opacity-60"
-        >
-          <div className="relative bg-white rounded-lg shadow">
+          className="fixed top-0 left-0 right-0 z-50 w-full h-full p-4 flex items-center justify-center bg-gray-800 bg-opacity-60"
+          >
+            <div className="relative bg-white rounded-lg shadow p-8 w-full md:w-96">
             <button
               onClick={closeModal}
               type="button"
@@ -126,7 +126,7 @@ function CreateIncomeModal() {
                           type="text"
                           {...field}
                           placeholder="Income"
-                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-2.5 px-4"
+                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-3 px-4"
                         />
                       )}
                     />
@@ -154,7 +154,7 @@ function CreateIncomeModal() {
                           type="text"
                           {...field}
                           placeholder="Amount"
-                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-2.5 px-4"
+                          className="text-sm border-[1.3px] focus:outline-primary border-primary rounded-lg block w-full p-2 py-3 px-4"
                         />
                       )}
                     />
