@@ -43,7 +43,7 @@ function CreateSubCategoryModel() {
     categoryMutation()
     .unwrap()
     .then((data) => {
-        console.log(data)
+       
       setData(
         data?.data?.rows?.map((row, index) => ({           
             id: index + 1,
@@ -55,7 +55,6 @@ function CreateSubCategoryModel() {
 }, [])
 
 
-console.log(data)
 
   const [showModal, setShowModal] = useState(false)
   const {
@@ -88,7 +87,7 @@ console.log(data)
         closeModal()
       })
       .catch((error) => {
-        console.error(error)
+      
         if (error.data && error.data.message){
           toast.error(error.data.message)
         }else{
