@@ -36,17 +36,16 @@ const CategoryTable = () => {
   
     if (categoryListIsSuccess) {      
       setData(
-        categoryData?.data?.rows?.map((row, index) => ({
+        categoryData?.data?.rows?.forEach((row, index) => ({
           id: index + 1,
           description: row?.description,
           categoryName: row?.categoryName         
          
-        })) || []
+        })) 
       )
     }
   }, [categoryData, categoryListIsSuccess])
 
-  
 
   useEffect(() => {
 
@@ -59,12 +58,15 @@ const CategoryTable = () => {
             id: index + 1,
             description: row?.description,
           categoryName: row?.categoryName
-        })) || [ data]
+        })) || [ data?.data]
         )
     })
 }, [])
-
+  
+// console.log(categoryData?.data);
 console.log(data);
+console.log(data[0])
+
 
 
 const columns = useMemo(
@@ -100,8 +102,8 @@ const columns = useMemo(
   const TableInstance = useTable(
     {
       columns,
-      data,
-      initialState: { pageIndex: 0 },
+      data: data[0] || [],
+    
     },
 
     useFilters,
